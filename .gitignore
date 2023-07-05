@@ -4,6 +4,9 @@
 # Compiled projects
 */target/
 
+# Intellij files
+.idea
+
 # Log file
 *.log
 
