@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -13,7 +16,6 @@ public class SecurityConfiguration {
     /**
      * Custom filter chain that intercept all http transactions
      * @param http
-     * @return
      * @throws Exception
      */
 
@@ -33,5 +35,24 @@ public class SecurityConfiguration {
                 });
 
         return http.build();
+    }
+
+    /**
+     * This is a in memory implementation for demo purposes only
+     */
+    @Bean
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("12345")
+                .authorities("admin")
+                .build();
+
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("user")
+                .password("12345")
+                .authorities("read")
+                .build();
+        return new InMemoryUserDetailsManager(admin, user);
     }
 }
