@@ -16,6 +16,12 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# Test properties
+*/application-test.properties
+
+# IDE auto generated files
+*/.DS_Store
+
 # Package Files #
 *.jar
 *.war
