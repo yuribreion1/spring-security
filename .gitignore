@@ -4,6 +4,9 @@
 # Compiled projects
 */target/
 
+# Build folder
+out
+
 # Intellij files
 .idea
 
